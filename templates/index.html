@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <header class="header">
+            <div class="logo">
+                <h1>IoT Dashboard</h1>
+            </div>
+            <div class="user-info">
+                <p>Welcome, {{ username }}!</p>
+                <a href="/logout" class="logout-button">Logout</a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="grid-container">
+                <!-- Temperature Section -->
+                <div class="card">
+                    <h2>Temperature (°C)</h2>
+                    <p id="temperatureValue" class="data-value">-- °C</p>
+                    <canvas id="temperatureGauge"></canvas>
+                </div>
+
+                <!-- Humidity Section -->
+                <div class="card">
+                    <h2>Humidity (%)</h2>
+                    <p id="humidityValue" class="data-value">-- %</p>
+                    <div id="humidityProgress">
+                        <div id="humidityBar"></div>
+                    </div>
+                </div>
+
+                <!-- Energy Consumption Section -->
+                <div class="card">
+                    <h2>Energy Consumption (kW)</h2>
+                    <p id="energyvalue" class="data-value">-- KW</p>
+                    <canvas id="energyLineChart"></canvas>
+                </div>
+            </div>
+
+            <!-- New Trend Charts Section -->
+            <div class="trend-charts">
+                <div class="trend-card">
+                    <h3>Temperature Trend</h3>
+                    <canvas id="temperatureTrendChart"></canvas>
+                </div>
+
+                <div class="trend-card">
+                    <h3>Humidity Trend</h3>
+                    <canvas id="humidityTrendChart"></canvas>
+                </div>
+
+                <div class="trend-card">
+                    <h3>Energy Consumption Trend</h3>
+                    <canvas id="energyTrendChart"></canvas>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 IoT Dashboard. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
